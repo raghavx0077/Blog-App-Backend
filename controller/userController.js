@@ -8,7 +8,7 @@ try{
     const user=new User(req.body);
     await user.save();
 
-    return res.status(200).send(user);
+    return res.status(200).send(user).json("");
 }
 catch(err){
     return res.status(500).send (err.message)
@@ -34,6 +34,7 @@ exports.getUserById = async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
+       
         return res.status(200).json(user);
     } catch (err) {
         return res.status(500).send(err.message);
